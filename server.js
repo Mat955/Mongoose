@@ -5,7 +5,6 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb+srv://Lewy:asdfg@cluster0-5csyn.mongodb.net/test?retryWrites=true&w=majority', {
     useMongoClient: true
 });
-
 //new user Schema
 const userSchema = new Schema({
     name: String,
@@ -25,10 +24,10 @@ userSchema.methods.manify = function (next) {
 
 //pre-save method
 userSchema.pre('save', function (next) {
-    //pobranie aktualnego czasu
+    ///download current time
     const currentDate = new Date();
 
-    //zmiana pola na aktualny czas
+    //change field to actually time
     this.updated_at = currentDate;
 
     if (!this.created_at)
